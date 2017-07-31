@@ -1,7 +1,11 @@
 class Api::V1::ScrapesController < ApplicationController
+  def index
+    @scrapes = Scrape.all.page(params[:page])
+    render 'index.json.jbuilder', status: 200
+  end
+
   def create
     scrape = Scrape.find_or_initialize_by(url: params[:url])
-
     if scrape.save
       ScrapeJob.perform_later(scrape.id)
       render json: { status: 'success' }, status: 200

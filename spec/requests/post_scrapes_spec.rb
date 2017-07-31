@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe '/api/v1/scrapes' do
+describe 'POST /api/v1/scrapes' do
   let(:payload) {
     { url: url }
   }

@@ -1,4 +1,5 @@
 class Scrape < ApplicationRecord
+  paginates_per 10
   has_many :tags
   validates :url, presence: true, url_or_local_file: true
 
