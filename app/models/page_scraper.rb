@@ -1,7 +1,7 @@
 require 'nokogiri'
 require 'open-uri'
 
-class Parser
+class PageScraper
   attr_reader :scrape, :tag_types, :document
 
   def initialize(scrape, tag_types = Tag::TAG_TYPES)

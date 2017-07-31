@@ -15,7 +15,9 @@
 	$ rails s
 	$ bundle exec sidekiq -q default
 
-## Creating a scrape
+## Using the API Endpoints
+
+### Creating a scrape
 
 Using postman or your favorite tool for testing API endpoints,
 create a POST request and pass the following JSON:
@@ -23,3 +25,7 @@ create a POST request and pass the following JSON:
 	{
 	  "url": "http://foo-bar.com"
 	}
+
+### Retrieving scrape results
+
+COMING SOON!

@@ -1,9 +1,8 @@
 require 'rails_helper'
 
-describe Parser do
-
+describe PageScraper do
   describe '#process' do
-    subject { Parser.new(scrape) }
+    subject { described_class.new(scrape) }
     let(:scrape) { create :scrape }
 
     before do
