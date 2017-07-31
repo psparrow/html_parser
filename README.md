@@ -1,24 +1,25 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Installation
 
-Things you may want to cover:
+	$ bunde install
+	$ rails db:create
+	$ rails db:migrate
 
-* Ruby version
+## Run the specs
 
-* System dependencies
+	$ rspec
 
-* Configuration
+## Run the server and background jobs locally:
 
-* Database creation
+	$ rails s
+	$ bundle exec sidekiq -q default
 
-* Database initialization
+## Creating a scrape
 
-* How to run the test suite
+Using postman or your favorite tool for testing API endpoints,
+create a POST request and pass the following JSON:
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+	{
+	  "url": "http://foo-bar.com"
+	}
