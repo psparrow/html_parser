@@ -6,8 +6,13 @@ describe PageScraper do
     let(:scrape) { create :scrape }
 
     before do
+      Timecop.freeze(Date.today)
       subject.process
       scrape.reload
+    end
+
+    after do
+      Timecop.return
     end
 
     it 'stores the content of H1 tags' do
@@ -24,6 +29,10 @@ describe PageScraper do
 
     it 'stores the href of links' do
       expect(scrape.tags.a.map(&:value)).to include 'http://google.com'
+    end
+
+    it 'updates the scraped_at timestap' do
+      expect(scrape.scraped_at).to eq Time.current
     end
   end
 end

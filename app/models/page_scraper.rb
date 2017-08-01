@@ -10,6 +10,7 @@ class PageScraper
   end
 
   def process
+    update_timestamp
     clear_tags
     process_tag_types
     true
@@ -18,6 +19,14 @@ class PageScraper
   end
 
   private
+
+  def update_timestamp
+    scrape.update_attribute(:scraped_at, Time.current)
+  end
+
+  def clear_tags
+    scrape.tags.destroy_all
+  end
 
   def process_tag_types
     tag_types.each do |tag_type, attr|
@@ -43,9 +52,6 @@ class PageScraper
     @document ||= Nokogiri::HTML(open(scrape.url))
   end
 
-  def clear_tags
-    scrape.tags.destroy_all
-  end
 
   def add_tag(tag_type, value)
     scrape.tags << Tag.new(tag_type: tag_type, value: value)

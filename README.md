@@ -38,3 +38,8 @@ You can also include an optional page parameter as the endpoint returns
 a maximum of 10 URLs per request.
 
 	GET http://localhost:3000/api/v1/scrapes?page=2
+
+
+### Todo
+
+* Work through Rubocop styling recommendations

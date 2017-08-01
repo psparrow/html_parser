@@ -6,11 +6,23 @@ class Api::V1::ScrapesController < ApplicationController
 
   def create
     scrape = Scrape.find_or_initialize_by(url: params[:url])
+    return success if scrape.cached?
+
     if scrape.save
       ScrapeJob.perform_later(scrape.id)
-      render json: { status: 'success' }, status: 200
+      success
     else
-      render json: { status: 'failure' }, status: 422
+      failure
     end
+  end
+
+  private
+
+  def success
+    render json: { status: 'success' }, status: 200
+  end
+
+  def failure
+    render json: { status: 'failure' }, status: 422
   end
 end
