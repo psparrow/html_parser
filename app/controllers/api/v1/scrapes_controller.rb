@@ -1,6 +1,6 @@
 class Api::V1::ScrapesController < ApplicationController
   def index
-    @scrapes = Scrape.all.page(params[:page])
+    @scrapes = Scrape.page(params[:page])
     render 'index.json.jbuilder', status: 200
   end
 
